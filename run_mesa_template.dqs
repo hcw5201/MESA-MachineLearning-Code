@@ -1,0 +1,19 @@
+#!/bin/bash
+#PBS -N MESA-MASS-Z-OV-MLT
+#PBS -M aufded93@erau.edu
+#PBS -m e
+#PBS -q normalq
+#PBS -l nodes=1:ppn=48,walltime=24:00:00
+#PBS -S /bin/bash
+
+cd $PBS_O_WORKDIR
+
+#
+# this should be equal to the value of ppn
+# there are 8 cores on each henyey node
+#
+export MESA_INLIST='inlist_spica_MASS_Z_OV_MLT_rotation'
+export OMP_NUM_THREADS=48
+
+./rn > rn_MASS_Z_OV_MLT.out
+
